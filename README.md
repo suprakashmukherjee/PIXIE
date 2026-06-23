@@ -138,3 +138,40 @@ PIXIE aims to become a photography intelligence platform that helps photographer
 ---
 
 **Organize. Analyze. Understand Your Photography.**
+
+
+---
+
+## Running PIXIE
+
+### 1. Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 2. Start the Application
+
+```bash
+uvicorn main:app --reload
+```
+
+You should see output similar to:
+
+```text
+INFO:     Uvicorn running on http://127.0.0.1:8000
+```
+
+### 3. Open PIXIE in Your Browser
+
+Navigate to:
+
+```text
+http://127.0.0.1:8000
+```
+
+### Notes
+
+* Ensure you are running the command from the project's root directory.
+* The application supports Windows, macOS, and Linux file paths.
+* For safety, PIXIE runs in **Dry Run** mode by default and will not move any files unless explicitly instructed.
