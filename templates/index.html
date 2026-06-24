@@ -1,101 +1,97 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PIXIE RAW File Manager</title>
 
-    <link
-        rel="stylesheet"
-        href="/static/style.css"
-    >
+    <link rel="stylesheet" href="/static/style.css">
 </head>
 
 <body>
 
-<div class="container">
+    <div class="container">
 
-    <h1>PIXIE RAW File Manager</h1>
+        <h1>PIXIE RAW File Manager</h1>
 
-    <div class="card">
+        <div class="card">
 
-        <label>
-            Source Photo Library
-        </label>
-
-        <input
-            type="text"
-            id="sourcePath"
-            placeholder="C:\Photos or /Users/name/Photos"
-        >
-
-        <label>
-            Delete Folder
-        </label>
-
-        <input
-            type="text"
-            id="deleteFolder"
-            placeholder="C:\PIXIE_DELETE"
-        >
-
-        <div class="checkbox-row">
-
-            <label>
-                <input
-                    type="checkbox"
-                    id="dryRun"
-                    checked
-                >
-                Dry Run
+            <label for="sourcePath">
+                Source Photo Library
             </label>
+
+            <input
+                type="text"
+                id="sourcePath"
+                placeholder="/Users/name/Photos or C:\Photos"
+            >
+
+            <p class="info-text">
+                PIXIE will automatically create a
+                <strong>PIXIE_DELETE</strong>
+                folder inside the selected photo library and move orphan RAW files there.
+            </p>
+
+            <div class="checkbox-row">
+
+                <label>
+                    <input
+                        type="checkbox"
+                        id="dryRun"
+                        checked
+                    >
+                    Dry Run (Recommended)
+                </label>
+
+            </div>
+
+            <div class="checkbox-row">
+
+                <label>
+                    <input
+                        type="checkbox"
+                        id="deleteAfterMove"
+                    >
+                    Delete After Move
+                </label>
+
+            </div>
+
+            <button onclick="runScan()">
+                Scan Library
+            </button>
 
         </div>
 
-        <div class="checkbox-row">
+        <div
+            id="results"
+            class="card hidden"
+        >
 
-            <label>
-                <input
-                    type="checkbox"
-                    id="deleteAfterMove"
-                >
-                Delete After Move
-            </label>
+            <h2>Scan Results</h2>
+
+            <div id="summary"></div>
+
+            <table id="orphansTable">
+
+                <thead>
+                    <tr>
+                        <th>RAW File</th>
+                        <th>Source Path</th>
+                    </tr>
+                </thead>
+
+                <tbody></tbody>
+
+            </table>
 
         </div>
 
-        <button onclick="runScan()">
-            Scan Library
-        </button>
-
     </div>
 
-    <div
-        id="results"
-        class="card hidden"
-    >
-
-        <h2>Results</h2>
-
-        <div id="summary"></div>
-
-        <table id="orphansTable">
-
-            <thead>
-                <tr>
-                    <th>RAW File</th>
-                    <th>Source Path</th>
-                </tr>
-            </thead>
-
-            <tbody></tbody>
-
-        </table>
-
-    </div>
-
-</div>
-
-<script src="/static/app.js"></script>
+    <script src="/static/app.js"></script>
 
 </body>
+
 </html>
